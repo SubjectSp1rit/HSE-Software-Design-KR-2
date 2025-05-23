@@ -1,0 +1,93 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: filestore
+    ports:
+      - "15432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  file-storing:
+    build:
+      context: .
+      dockerfile: FileStoringService/Dockerfile
+    container_name: file-storing
+    restart: on-failure
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:15001
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Username=user;Password=password;Database=filestore"
+    depends_on:
+      - postgres
+    ports:
+      - "15001:15001"
+    volumes:
+      - ./FileStoringService/storage:/app/storage
+
+  file-analysis:
+    build:
+      context: .
+      dockerfile: FileAnalysisService/Dockerfile
+    container_name: file-analysis
+    restart: on-failure
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:15002
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Username=user;Password=password;Database=analysis"
+      FileStorer__BaseUrl: http://file-storing:15001/
+      WordCloud__BaseUrl: http://wordcloud:15003/
+    depends_on:
+      - postgres
+      - file-storing
+      - wordcloud
+    ports:
+      - "15002:15002"
+    volumes:
+      - ./FileAnalysisService/storage:/app/storage
+
+  wordcloud:
+    build:
+      context: WordCloudService
+      dockerfile: Dockerfile
+    container_name: wordcloud
+    restart: on-failure
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:15003
+      QuickChart__BaseUrl: https://quickchart.io/
+    depends_on:
+      - postgres
+    ports:
+      - "15003:15003"
+
+  api-gateway:
+    build:
+      context: ApiGateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    restart: on-failure
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:15000
+      FileStorageService__BaseUrl: http://file-storing:15001/
+      FileAnalysisService__BaseUrl: http://file-analysis:15002/
+    depends_on:
+      - file-storing
+      - file-analysis
+      - wordcloud
+    ports:
+      - "15000:15000"
+
+volumes:
+  pgdata:
+

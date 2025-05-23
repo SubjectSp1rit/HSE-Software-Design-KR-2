@@ -1,0 +1,11 @@
+namespace FileAnalysisService.Application.Dtos;
+
+public class AnalysisResultDto
+{
+    public Guid FileId { get; set; }
+    public int ParagraphCount { get; set; }
+    public int WordCount { get; set; }
+    public int CharCount { get; set; }
+    public string CloudImagePath { get; set; } = string.Empty;
+    public DateTime AnalyzedAt { get; set; }
+}
