@@ -12,6 +12,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileAnalysisService", "File
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCloudService", "WordCloudService\WordCloudService.csproj", "{B93BEDF1-542C-4CEC-8180-076D3CC69EE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway.Tests", "ApiGateway.Tests\ApiGateway.Tests.csproj", "{8136D1BC-86F7-443E-AB34-F68CCF6FDAAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileStoringService.Tests", "FileStoringService.Tests\FileStoringService.Tests.csproj", "{2A3890EB-D2A2-40E5-B9DA-FC5A11BAC9DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileAnalysisService.Tests", "FileAnalysisService.Tests\FileAnalysisService.Tests.csproj", "{5E4521C1-6CA5-49AC-B681-D420E4359235}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCloudService.Tests", "WordCloudService.Tests\WordCloudService.Tests.csproj", "{4232C293-F628-4B8F-A7FE-AE363C8786E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +50,21 @@ Global
 		{B93BEDF1-542C-4CEC-8180-076D3CC69EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B93BEDF1-542C-4CEC-8180-076D3CC69EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B93BEDF1-542C-4CEC-8180-076D3CC69EE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8136D1BC-86F7-443E-AB34-F68CCF6FDAAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8136D1BC-86F7-443E-AB34-F68CCF6FDAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8136D1BC-86F7-443E-AB34-F68CCF6FDAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8136D1BC-86F7-443E-AB34-F68CCF6FDAAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A3890EB-D2A2-40E5-B9DA-FC5A11BAC9DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A3890EB-D2A2-40E5-B9DA-FC5A11BAC9DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A3890EB-D2A2-40E5-B9DA-FC5A11BAC9DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A3890EB-D2A2-40E5-B9DA-FC5A11BAC9DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E4521C1-6CA5-49AC-B681-D420E4359235}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E4521C1-6CA5-49AC-B681-D420E4359235}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E4521C1-6CA5-49AC-B681-D420E4359235}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E4521C1-6CA5-49AC-B681-D420E4359235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4232C293-F628-4B8F-A7FE-AE363C8786E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4232C293-F628-4B8F-A7FE-AE363C8786E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4232C293-F628-4B8F-A7FE-AE363C8786E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4232C293-F628-4B8F-A7FE-AE363C8786E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
